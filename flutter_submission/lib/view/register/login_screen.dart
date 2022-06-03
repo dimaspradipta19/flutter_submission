@@ -109,21 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               (route) => false,
                             );
                           }
-
-                          // Navigator.pushAndRemoveUntil(context,
-                          //     MaterialPageRoute(
-                          //   builder: (context) {
-                          //     return HomeScreen(name: _nameController.text);
-                          //   },
-                          // ), (route) => false);
-
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>
-                          //         HomeScreen(name: _nameController.text),
-                          //   ),
-                          // );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: blackColor,

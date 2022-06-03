@@ -10,10 +10,9 @@ class DetailEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -81,6 +80,43 @@ class DetailEventScreen extends StatelessWidget {
                           child: Text(event.lokasiEvent),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 10.0),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Row(
+                  children: [
+                    const Icon(Icons.share),
+                    const SizedBox(width: 20.0),
+                    const Icon(Icons.favorite_outline_outlined),
+                    const SizedBox(width: 20.0),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          final snackBar = SnackBar(
+                            content: Text(
+                                'Anda telah mendaftar Program ${event.nama}!'),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: () {
+                                // Some code to undo the change.
+                              },
+                            ),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: redColor,
+                        ),
+                        child: const Text(
+                          "Get your ticket Now",
+                          style: TextStyle(
+                              fontSize: 18.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ],
                 ),
