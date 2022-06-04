@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_submission/theme.dart';
 import 'package:flutter_submission/view/home_screen.dart';
@@ -56,15 +57,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: Icon(Icons.person),
                         labelText: 'Name',
                       ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your name Correctly';
+                      validator: (name) {
+                        if (name!.isEmpty || name.length < 4) {
+                          return 'Minimal character is 4';
                         }
                         return null;
                       },
-                    ),
-                    const SizedBox(
-                      height: 20,
                     ),
                     TextFormField(
                       controller: _emailController,
@@ -72,9 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: Icon(Icons.email),
                         labelText: 'Email',
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
+                      validator: (email) {
+                        if (email!.isEmpty || !EmailValidator.validate(email)) {
+                          return "Email is not valid";
+                        }
+                        return null;
+                      },
                     ),
                     TextFormField(
                       controller: _passwordController,
@@ -82,6 +83,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: Icon(Icons.lock),
                         labelText: 'Password',
                       ),
+                      obscureText: true,
+                      validator: (password) {
+                        if (password!.isEmpty || password.length < 4) {
+                          return 'Minimal character is 4';
+                        }
+                        return null;
+                      },
                     ),
                   ],
                 ),
@@ -103,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return HomeScreen(name: _nameController.text);
+                                  return const HomeScreen();
                                 },
                               ),
                               (route) => false,

@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_submission/models/trending_events_model.dart';
 import 'package:flutter_submission/theme.dart';
 
-class DetailEventScreen extends StatelessWidget {
+class DetailEventScreen extends StatefulWidget {
   const DetailEventScreen({Key? key, required this.event}) : super(key: key);
 
   final TrendingEvent event;
+
+  @override
+  State<DetailEventScreen> createState() => _DetailEventScreenState();
+}
+
+class _DetailEventScreenState extends State<DetailEventScreen> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,7 @@ class DetailEventScreen extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Image.asset(event.gambarEvent),
+                  Image.asset(widget.event.gambarEvent),
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -35,7 +42,7 @@ class DetailEventScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      event.nama,
+                      widget.event.nama,
                       style: const TextStyle(
                           fontSize: 28.0, fontWeight: FontWeight.bold),
                     ),
@@ -43,7 +50,7 @@ class DetailEventScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      event.deskripsiEvent,
+                      widget.event.deskripsiEvent,
                       style: const TextStyle(fontSize: 18.0),
                     ),
                     const SizedBox(
@@ -55,7 +62,7 @@ class DetailEventScreen extends StatelessWidget {
                         const SizedBox(
                           width: 10.0,
                         ),
-                        Text(event.tanggalEvent)
+                        Text(widget.event.tanggalEvent)
                       ],
                     ),
                     const SizedBox(height: 10.0),
@@ -65,7 +72,7 @@ class DetailEventScreen extends StatelessWidget {
                         const SizedBox(
                           width: 10.0,
                         ),
-                        Text(event.hargaTiket)
+                        Text(widget.event.hargaTiket)
                       ],
                     ),
                     const SizedBox(height: 10.0),
@@ -77,7 +84,7 @@ class DetailEventScreen extends StatelessWidget {
                           width: 10.0,
                         ),
                         Expanded(
-                          child: Text(event.lokasiEvent),
+                          child: Text(widget.event.lokasiEvent),
                         ),
                       ],
                     ),
@@ -91,14 +98,24 @@ class DetailEventScreen extends StatelessWidget {
                   children: [
                     const Icon(Icons.share),
                     const SizedBox(width: 20.0),
-                    const Icon(Icons.favorite_outline_outlined),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isFavorite = !isFavorite;
+                        });
+                      },
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: redColor,
+                      ),
+                    ),
                     const SizedBox(width: 20.0),
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
                           final snackBar = SnackBar(
                             content: Text(
-                                'Anda telah mendaftar Program ${event.nama}!'),
+                                'Anda telah mendaftar Program ${widget.event.nama}!'),
                             action: SnackBarAction(
                               label: 'Undo',
                               onPressed: () {
