@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_submission/models/trending_events_model.dart';
-import 'package:flutter_submission/theme.dart';
+import 'package:flutter_submission/utils/theme.dart';
 
 class DetailEventScreen extends StatefulWidget {
   const DetailEventScreen({Key? key, required this.event}) : super(key: key);

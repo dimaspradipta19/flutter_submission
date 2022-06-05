@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_submission/theme.dart';
-import 'package:flutter_submission/view/beranda_screen.dart';
-import 'package:flutter_submission/view/event_screen/event_list_screen.dart';
-import 'package:flutter_submission/view/profile_screen.dart';
+import 'package:flutter_submission/utils/theme.dart';
+import 'package:flutter_submission/view/bottombar_screen/beranda_screen.dart';
+import 'package:flutter_submission/view/bottombar_screen/event_list_screen.dart';
+import 'package:flutter_submission/view/bottombar_screen/profile_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,8 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pilihanHalaman = [
-    const Beranda(
-    ),
+    const Beranda(),
     const EventListScreen(),
     const ProfileScreen(),
   ];

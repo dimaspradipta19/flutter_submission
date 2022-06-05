@@ -1,6 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_submission/theme.dart';
+import 'package:flutter_submission/utils/theme.dart';
 import 'package:flutter_submission/view/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {

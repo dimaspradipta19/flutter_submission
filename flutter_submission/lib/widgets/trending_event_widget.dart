@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_submission/models/trending_events_model.dart';
-import 'package:flutter_submission/view/event_screen/detail_event_screen.dart';
+import 'package:flutter_submission/view/detail_event_screen.dart';
 
 class TrendingEventWidget extends StatelessWidget {
   const TrendingEventWidget({Key? key}) : super(key: key);

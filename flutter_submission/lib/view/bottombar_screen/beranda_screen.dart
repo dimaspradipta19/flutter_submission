@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_submission/theme.dart';
+import 'package:flutter_submission/utils/theme.dart';
 import 'package:flutter_submission/view/register/login_screen.dart';
 import 'package:flutter_submission/widgets/trending_event_widget.dart';
 
